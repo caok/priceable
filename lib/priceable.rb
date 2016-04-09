@@ -19,7 +19,7 @@ module Priceable
       end
     end
 
-    unless Rails::VERSION::MAJOR < 4 && !defined?(ProtectedAttributes)
+    if Rails::VERSION::MAJOR < 4 || defined?(ProtectedAttributes)
       if self._accessible_attributes?
         attr_accessible *price_fields
       end
